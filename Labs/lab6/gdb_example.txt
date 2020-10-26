@@ -1,0 +1,570 @@
+Script started on 2020-02-13 17:58:29-0500
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ gcc 0[K-Wall -std=gnu99 -g  -o overfo[K;[Klow overflow.c
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ ./v[Koverflow 
+Address of the variables:
+7ffffdf342c0 -> &after[0]
+7ffffdf342c4 -> &after[1]
+7ffffdf342c8 -> &after[2]
+7ffffdf342cc -> &after[3]
+7ffffdf342b0 -> &a[0]
+7ffffdf342b4 -> &a[1]
+7ffffdf342b8 -> &a[2]
+7ffffdf342bc -> &a[3]
+7ffffdf342a0 -> &before[0]
+7ffffdf342a4 -> &before[1]
+7ffffdf342a8 -> &before[2]
+7ffffdf342ac -> &before[3]
+7ffffdf3429c -> &i
+7ffffdf34298 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+i = 1
+before = {10, 10, 10, 10}
+a = {0, 10, 0, 0}
+after = {10, 10, 10, 10}
+i = 2
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 0}
+after = {10, 10, 10, 10}
+i = 3
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {10, 10, 10, 10}
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ ./overflow gcc -Wall -std=gnu99 -g  -o overflow overflow.c
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ gcc -Wall -std=gnu99 -g  -o overflow overflow.c[A[C[C[C[C[C[C[12P./overflow 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Address of the variables:
+7ffe70c8fa30 -> &after[0]
+7ffe70c8fa34 -> &after[1]
+7ffe70c8fa38 -> &after[2]
+7ffe70c8fa3c -> &after[3]
+7ffe70c8fa20 -> &a[0]
+7ffe70c8fa24 -> &a[1]
+7ffe70c8fa28 -> &a[2]
+7ffe70c8fa2c -> &a[3]
+7ffe70c8fa10 -> &before[0]
+7ffe70c8fa14 -> &before[1]
+7ffe70c8fa18 -> &before[2]
+7ffe70c8fa1c -> &before[3]
+7ffe70c8fa0c -> &i
+7ffe70c8fa08 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+i = 1
+before = {10, 10, 10, 10}
+a = {0, 10, 0, 0}
+after = {10, 10, 10, 10}
+i = 2
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 0}
+after = {10, 10, 10, 10}
+i = 3
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {10, 10, 10, 10}
+i = 4
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 30}
+after = {40, 10, 10, 10}
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ gdb overflow
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related t---Type <return> to continue, or q <return> to quit-[K---
+o "word"...
+Reading symbols from overflow...done.
+(gdb) break a[Kmain
+Breakpoint 1 at 0x742: file overflow.c, line 6.
+(gdb) run
+Starting program: /h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6/overflow 
+
+Breakpoint 1, main () at overflow.c:6
+6	int main() {
+(gdb) n
+7	    int index = 0;
+(gdb) 
+9	    int before[SIZE] = {10, 10, 10, 10};
+(gdb) 
+10	    int a[SIZE] = {0, 0, 0, 0};
+(gdb) 
+11	    int after[SIZE] = {10, 10, 10, 10};
+(gdb) 
+13	    printf("Address of the variables:\n");
+(gdb) 
+Address of the variables:
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) 
+7fffffffe830 -> &after[0]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) 
+7fffffffe834 -> &after[1]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) 
+7fffffffe838 -> &after[2]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) 
+7fffffffe83c -> &after[3]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe820 -> &a[0]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe824 -> &a[1]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe828 -> &a[2]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe82c -> &a[3]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+(gdb) 
+7fffffffe810 -> &before[0]
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+(gdb) 
+7fffffffe814 -> &before[1]
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+(gdb) 
+7fffffffe818 -> &before[2]
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+(gdb) 
+7fffffffe81c -> &before[3]
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+23	    printf("%lx -> &i\n", (unsigned long)&i);
+(gdb) 
+7fffffffe80c -> &i
+24	    printf("%lx -> &index\n", (unsigned long)&index);
+(gdb) 
+7fffffffe808 -> &index
+25	    printf("\n");
+(gdb) 
+
+28	    printf("Initial values:\n");
+(gdb) 
+Initial values:
+29	    printf("i = %d\n", i);
+(gdb) 
+i = 0
+30	    printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) 
+before = {10, 10, 10, 10}
+31	    printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) 
+a = {0, 0, 0, 0}
+32	    printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+(gdb) 
+after = {10, 10, 10, 10}
+33	    printf("\n");
+(gdb) 
+
+36	    for (i = 0; i < OVERFLOW; i++) {
+(gdb) 
+37	        a[i] = i * 10;
+(gdb) 
+38	        printf("i = %d\n", i);
+(gdb) 
+i = 0
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) 
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) 
+a = {0, 0, 0, 0}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+(gdb) 
+after = {10, 10, 10, 10}
+36	    for (i = 0; i < OVERFLOW; i++) {
+(gdb) 
+37	        a[i] = i * 10;
+(gdb) 
+38	        printf("i = %d\n", i);
+(gdb) 
+i = 1
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) 
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) 
+a = {0, 10, 0, 0}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+(gdb) 
+after = {10, 10, 10, 10}
+36	    for (i = 0; i < OVERFLOW; i++) {
+(gdb) 
+37	        a[i] = i * 10;
+(gdb) 
+38	        printf("i = %d\n", i);
+(gdb) 
+i = 2
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) 
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) 
+a = {0, 10, 20, 0}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+(gdb) 
+after = {10, 10, 10, 10}
+36	    for (i = 0; i < OVERFLOW; i++) {
+(gdb) 
+37	        a[i] = i * 10;
+(gdb) 
+38	        printf("i = %d\n", i);
+(gdb) 
+i = 3
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) 
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) 
+a = {0, 10, 20, 30}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+(gdb) 
+after = {10, 10, 10, 10}
+36	    for (i = 0; i < OVERFLOW; i++) {
+(gdb) 
+37	        a[i] = i * 10;
+(gdb) 
+38	        printf("i = %d\n", i);
+(gdb) 
+i = 4
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) 
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) 
+a = {0, 10, 20, 30}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+(gdb) 
+after = {40, 10, 10, 10}
+36	    for (i = 0; i < OVERFLOW; i++) {
+(gdb) 
+44	    return 0;
+(gdb) 
+45	}
+(gdb) 
+__libc_start_main (main=0x55555555473a <main>, 
+    argc=1, argv=0x7fffffffe938, 
+    init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffe928)
+    at ../csu/libc-start.c:344
+344	../csu/libc-start.c: No such file or directory.
+(gdb) 
+[Inferior 1 (process 49471) exited normally]
+(gdb) 
+The program is not being run.
+(gdb) quit
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ y[Kgdb overflow
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related t---Type <return> to continue, or q <return> to quit-[K---
+o "word"...
+Reading symbols from overflow...done.
+(gdb) list
+1	#include <stdio.h>
+2	
+3	#define SIZE 4
+4	#define OVERFLOW 5
+5	
+6	int main() {
+7	    int index = 0;
+8	    int i;
+9	    int before[SIZE] = {10, 10, 10, 10};
+10	    int a[SIZE] = {0, 0, 0, 0};
+(gdb) list
+11	    int after[SIZE] = {10, 10, 10, 10};
+12	
+13	    printf("Address of the variables:\n");
+14	    for (index = 0; index < SIZE; index++) {
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+16	    }
+17	    for (index = 0; index < SIZE; index++) {
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+19	    }
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) break 15
+Breakpoint 1 at 0x7c1: file overflow.c, line 15.
+(gdb) break 18
+Breakpoint 2 at 0x808: file overflow.c, line 18.
+(gdb) list
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+22	    }
+23	    printf("%lx -> &i\n", (unsigned long)&i);
+24	    printf("%lx -> &index\n", (unsigned long)&index);
+25	    printf("\n");
+26	
+27	
+28	    printf("Initial values:\n");
+29	    printf("i = %d\n", i);
+30	    printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+(gdb) list
+31	    printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+32	    printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+33	    printf("\n");
+34	
+35	
+36	    for (i = 0; i < OVERFLOW; i++) {
+37	        a[i] = i * 10;
+38	        printf("i = %d\n", i);
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+(gdb) l[Kbreak 37
+Breakpoint 3 at 0x965: file overflow.c, line 37.
+(gdb) display [K[K[K[K[K[K[K[Krun
+Starting program: /h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6/overflow 
+Address of the variables:
+
+Breakpoint 1, main () at overflow.c:15
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) continue
+Continuing.
+7fffffffe830 -> &after[0]
+
+Breakpoint 1, main () at overflow.c:15
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) next
+7fffffffe834 -> &after[1]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+
+Breakpoint 1, main () at overflow.c:15
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) print after[1][1P]0]
+$1 = 10
+(gdb) print after[0][C after[0]% after[0][1P after[0]& after[0][C) after[0][1P after[0]( after[0][C[1Pafter[0][C[C[C[C[C[C[C[C[K)[K[[K])
+$2 = (int *) 0x7fffffffe830
+(gdb) next
+7fffffffe838 -> &after[2]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+
+Breakpoint 1, main () at overflow.c:15
+15	        printf("%lx -> &after[%d]\n", (unsigned long) &after[index], index);
+(gdb) 
+7fffffffe83c -> &after[3]
+14	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+
+Breakpoint 2, main () at overflow.c:18
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) nextprint &(after[0])
+$3 = (int *) 0x7fffffffe830
+(gdb) 
+$4 = (int *) 0x7fffffffe830
+(gdb) n
+7fffffffe820 -> &a[0]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+
+Breakpoint 2, main () at overflow.c:18
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe824 -> &a[1]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+
+Breakpoint 2, main () at overflow.c:18
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe828 -> &a[2]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+
+Breakpoint 2, main () at overflow.c:18
+18	        printf("%lx -> &a[%d]\n", (unsigned long) &a[index], index);
+(gdb) 
+7fffffffe82c -> &a[3]
+17	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) 
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+(gdb) 
+7fffffffe810 -> &before[0]
+20	    for (index = 0; index < SIZE; index++) {
+(gdb) p[Kprint &(after[0])
+$5 = (int *) 0x7fffffffe830
+(gdb) print &(after[K[K[K[K[4])
+$6 = (int *) 0x7fffffffe830
+(gdb) n
+21	        printf("%lx -> &before[%d]\n", (unsigned long) &before[index], index);
+(gdb) n[Kcontinue
+Continuing.
+7fffffffe814 -> &before[1]
+7fffffffe818 -> &before[2]
+7fffffffe81c -> &before[3]
+7fffffffe80c -> &i
+7fffffffe808 -> &index
+
+Initial values:
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+
+Breakpoint 3, main () at overflow.c:37
+37	        a[i] = i * 10;
+(gdb) 
+Continuing.
+i = 0
+before = {10, 10, 10, 10}
+a = {0, 0, 0, 0}
+after = {10, 10, 10, 10}
+
+Breakpoint 3, main () at overflow.c:37
+37	        a[i] = i * 10;
+(gdb) 
+Continuing.
+i = 1
+before = {10, 10, 10, 10}
+a = {0, 10, 0, 0}
+after = {10, 10, 10, 10}
+
+Breakpoint 3, main () at overflow.c:37
+37	        a[i] = i * 10;
+(gdb) 
+Continuing.
+i = 2
+before = {10, 10, 10, 10}
+a = {0, 10, 20, 0}
+after = {10, 10, 10, 10}
+
+Breakpoint 3, main () at overflow.c:37
+37	        a[i] = i * 10;
+(gdb) print &(a[i])
+$7 = (int *) 0x7fffffffe82c
+(gdb) p[Kdisplay i
+1: i = 3
+(gdb) 
+(gdb) display i[C[C[C[C[C[Cprint &(a[i])[C[C[C[C[C[C[4Pdisplay i[C[C[C[C[C[C[Kcontine[K[Kue
+Undefined command: "contiue".  Try "help".
+(gdb) n
+38	        printf("i = %d\n", i);
+1: i = 3
+(gdb) n
+i = 3
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 3
+(gdb) n
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 3
+(gdb) n
+a = {0, 10, 20, 30}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 3
+(gdb) n
+after = {10, 10, 10, 10}
+36	    for (i = 0; i < OVERFLOW; i++) {
+1: i = 3
+(gdb) n
+
+Breakpoint 3, main () at overflow.c:37
+37	        a[i] = i * 10;
+1: i = 4
+(gdb) n
+38	        printf("i = %d\n", i);
+1: i = 4
+(gdb) print &(a[i])
+$8 = (int *) 0x7fffffffe830
+(gdb) r[Kprint(afte[K[K[K[K[K &after[K[K[K[K[K(after[i])
+$9 = (int *) 0x7fffffffe840
+(gdb) print &(after[i])[1Pi])[C[1P])[1P])[C[1P)r)[)4)])
+$10 = (int *) 0x7fffffffe840
+(gdb) n
+i = 4
+39	        printf("before = {%d, %d, %d, %d}\n", before[0], before[1], before[2], before[3]);
+1: i = 4
+(gdb) n
+before = {10, 10, 10, 10}
+40	        printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 4
+(gdb) n
+a = {0, 10, 20, 30}
+41	        printf("after = {%d, %d, %d, %d}\n", after[0], after[1], after[2], after[3]);
+1: i = 4
+(gdb) print &(a[i])
+$11 = (int *) 0x7fffffffe830
+(gdb) print &(a[i])[C[C[C[C[C[C[Kprint &(a[i])[C[C[C[C[C[Cn[Kprint &(after[4])[1P4])[C[1P])[1P])r])[])0])
+$12 = (int *) 0x7fffffffe830
+(gdb) continue
+Continuing.
+after = {40, 10, 10, 10}
+[Inferior 1 (process 49631) exited normally]
+(gdb) gd[K[Kquit
+]0;zhiyiqi@wolf:/h/u4/c8/04/zhiyiqi/Desktop/zhiyiqi/lab6wolf:~/Desktop/zhiyiqi/lab6$ exi[K[K[Kquit [K[K[K[K[Kexist[K[Kt st[Kcript
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2020-02-13 18:04:35-0500
